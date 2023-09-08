@@ -194,4 +194,40 @@
 //     console.log(e)
 // }
 
+var form = document.getElementById('addForm');
+var itemList = document.getElementById('items');
+
+// Form submit event
+form.addEventListener('submit', addItem);
+
+
+// function to add an Item
+function addItem(e) {
+    e.preventDefault();
+
+// get Input Value
+var newItem = document.getElementById('newItem').value;
+
+// create new li element
+var li = document.createElement('li');
+// add a class name to the li
+li.className = 'list-group-item';
+
+// add text node with input value
+li.appendChild(document.createTextNode(newItem));
+
+// create delete bottun
+var deleteBtn = document.createElement('button');
+deleteBtn.innerText = 'X'; // Or: deleteBtn.appendChild(document.createTextNode('X'));
+// add class to bottun
+deleteBtn.className = 'btn_x';
+// append it to li element
+li.appendChild(deleteBtn);
+
+// appending li to ul
+itemList.appendChild(li);
+
+
+
+}
 
