@@ -199,7 +199,8 @@ var itemList = document.getElementById('items');
 
 // Form submit event
 form.addEventListener('submit', addItem);
-
+// delete Event
+itemList.addEventListener('click', removeItem);
 
 // function to add an Item
 function addItem(e) {
@@ -218,7 +219,7 @@ li.appendChild(document.createTextNode(newItem));
 
 // create delete bottun
 var deleteBtn = document.createElement('button');
-deleteBtn.innerText = 'X'; // Or: deleteBtn.appendChild(document.createTextNode('X'));
+deleteBtn.appendChild(document.createTextNode('X')); //deleteBtn.innerText = 'X'; 
 // add class to bottun
 deleteBtn.className = 'btn_x';
 // append it to li element
@@ -226,8 +227,15 @@ li.appendChild(deleteBtn);
 
 // appending li to ul
 itemList.appendChild(li);
-
-
-
 }
 
+
+// function to remove an Item
+function removeItem(e) {
+    if (e.target.classList.contains('btn_x')) {
+        if(confirm('are you sure?')){
+            var li = e.target.parentElement;
+            itemList.removeChild(li);
+        }
+    }
+}
