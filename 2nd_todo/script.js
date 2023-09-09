@@ -2,13 +2,8 @@ const listsContainer = document.querySelector('[data-lists]');
 const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]');
 
-let lists = [{
-    id: 1,
-    name: 'name'
-}, {
-    id: 2,
-    name: 'todo'
-}];
+const LOCAL_STORAGE_LIST_KEY = 'task.lists';
+let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LIST_KEY)) || [];
 
 
 newListForm.addEventListener('submit', e => {
@@ -18,7 +13,7 @@ newListForm.addEventListener('submit', e => {
     const list = createList(listName)
     newListInput.value = null;
     lists.push(list)
-    render();
+    saveAndRender();
 } )
 
 function createList(name) {
@@ -27,6 +22,14 @@ function createList(name) {
     tasks: []  }
 }
 
+function saveAndRender() {
+    save();
+    render();
+}
+
+function save(){
+    localStorage.setItem(LOCAL_STORAGE_LIST_KEY, JSON.stringify(lists))
+}
 
 function render() {
     clearElement(listsContainer);
