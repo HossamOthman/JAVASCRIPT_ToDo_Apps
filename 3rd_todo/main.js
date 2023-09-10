@@ -1,6 +1,7 @@
 let input = document.querySelector('.input');
 let submit = document.querySelector('.add');
 let tasksDiv = document.querySelector('.tasks');
+let delAll = document.getElementById('deleteAll');
 
 // empty array of tasks
 let arrayOfTasks = [];
@@ -15,7 +16,7 @@ getDataFromLocalStorage();
 
 // add task
 submit.onclick = function() {
-    if (input.value != null || input.value != '') {
+    if (input.value != null && input.value != '') {
         addTaskToArray(input.value);
         input.value = '';
     }
@@ -114,4 +115,13 @@ function toggleStatusTaskWith(taskId) {
         }
     })
     addDataToLocalStorageFrom(arrayOfTasks);
+}
+
+// delete all 
+delAll.addEventListener('click', deleteALL);
+
+function deleteALL() {
+    arrayOfTasks = [];
+    tasksDiv.innerHTML = '';
+    localStorage.clear();
 }

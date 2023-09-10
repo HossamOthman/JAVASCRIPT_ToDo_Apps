@@ -65,3 +65,22 @@ body {
     border-radius: 4px;
     cursor: pointer;
   }
+
+  .delAllContainer{
+    margin: 20px auto;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    align-items: self-end;
+    justify-content: flex-end;
+  }
+  .deleteAll{
+    border: none;
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
