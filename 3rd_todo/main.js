@@ -21,6 +21,17 @@ submit.onclick = function() {
     }
 }
 
+// click on task element
+tasksDiv.addEventListener('click', (e) => {
+    // verify whether ints the delete span
+    if (e.target.classList.contains('del')) {
+        // and remove element from local storage
+        deleteTaskWith(e.target.parentElement.getAttribute('data-id'));
+        // remove element from page
+        e.target.parentElement.remove();
+    }
+});
+
 function addTaskToArray(taskText) {
     // task Data object
     const task = {
@@ -60,7 +71,7 @@ function addElementsToPAgeFrom(arrayOfTasks) {
 
         // creating and appending the Delete span
         let span = document.createElement('span');
-        span.classNAme = 'del';
+        span.className = 'del';
         span.appendChild(document.createTextNode('Delete'));
         div.appendChild(span);
         
@@ -80,4 +91,10 @@ function getDataFromLocalStorage() {
         let tasks = JSON.parse(data);
         addElementsToPAgeFrom(tasks);
     }
+}
+
+// this delete function actually refreshes the local storage...
+function deleteTaskWith(taskId) {
+    arrayOfTasks = arrayOfTasks.filter(task => task.id != taskId);
+    addDataToLocalStorageFrom(arrayOfTasks);
 }
