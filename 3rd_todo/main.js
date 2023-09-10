@@ -123,5 +123,6 @@ delAll.addEventListener('click', deleteALL);
 function deleteALL() {
     arrayOfTasks = [];
     tasksDiv.innerHTML = '';
-    localStorage.clear();
+    // localStorage.clear();
+    localStorage.removeItem('tasks');
 }
