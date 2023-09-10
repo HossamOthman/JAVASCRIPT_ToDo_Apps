@@ -30,6 +30,13 @@ tasksDiv.addEventListener('click', (e) => {
         // remove element from page
         e.target.parentElement.remove();
     }
+    // Task element
+    if (e.target.classList.contains('task')) {
+        // toggle completed for the task
+        toggleStatusTaskWith(e.target.getAttribute('data-id'));
+        // toggle the done class
+        e.target.classList.toggle('done')
+    }
 });
 
 function addTaskToArray(taskText) {
@@ -96,5 +103,15 @@ function getDataFromLocalStorage() {
 // this delete function actually refreshes the local storage...
 function deleteTaskWith(taskId) {
     arrayOfTasks = arrayOfTasks.filter(task => task.id != taskId);
+    addDataToLocalStorageFrom(arrayOfTasks);
+}
+
+// toggle done status
+function toggleStatusTaskWith(taskId) {
+    arrayOfTasks.forEach(task => {
+        if (task.id == taskId) {
+            task.completed == false ?  task.completed = true : task.completed = false;
+        }
+    })
     addDataToLocalStorageFrom(arrayOfTasks);
 }
