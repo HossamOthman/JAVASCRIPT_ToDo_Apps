@@ -5,6 +5,14 @@ let tasksDiv = document.querySelector('.tasks');
 // empty array of tasks
 let arrayOfTasks = [];
 
+// check whether there are tasks in local storage
+if (localStorage.getItem('tasks')) {
+    arrayOfTasks = JSON.parse(localStorage.getItem('tasks'));
+}
+
+// trigger get data from local storage function
+getDataFromLocalStorage();
+
 // add task
 submit.onclick = function() {
     if (input.value != null || input.value != '') {
@@ -25,6 +33,12 @@ function addTaskToArray(taskText) {
 
     // add tasks to page
     addElementsToPAgeFrom(arrayOfTasks);
+
+    // add tasks to local Storage
+    addDataToLocalStorageFrom(arrayOfTasks);
+    // testing
+    // console.log(arrayOfTasks);
+    // console.log(JSON.stringify(arrayOfTasks));
 }
 
 function addElementsToPAgeFrom(arrayOfTasks) {
@@ -53,4 +67,17 @@ function addElementsToPAgeFrom(arrayOfTasks) {
         // add task div to main Tasks container
         tasksDiv.appendChild(div);
     })
+}
+
+function addDataToLocalStorageFrom(arrayOfTasks) {
+    window.localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
+
+}
+
+function getDataFromLocalStorage() {
+    let data = window.localStorage.getItem('tasks');
+    if (data) {
+        let tasks = JSON.parse(data);
+        addElementsToPAgeFrom(tasks);
+    }
 }
