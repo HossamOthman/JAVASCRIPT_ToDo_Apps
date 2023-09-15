@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+body {
+    background-color: #333;
+}
+
+.container{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin: 20px auto;
+}
+p {
+    width: 75%;
+    background-color: #ccc;
+    padding: 10px;
+    margin: 10px auto;
+    border: 1px solid #000;
+
+}
