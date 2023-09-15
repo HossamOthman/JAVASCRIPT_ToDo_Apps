@@ -13,11 +13,16 @@ body {
     flex-direction: column;
     margin: 20px auto;
 }
-p {
+.draggable {
     width: 75%;
     background-color: #ccc;
     padding: 10px;
     margin: 10px auto;
     border: 1px solid #000;
 
+}
+
+.dragging{
+    background-color: antiquewhite;
+    opacity: .9;
 }
