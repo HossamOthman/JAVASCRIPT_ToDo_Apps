@@ -54,7 +54,7 @@ ul,li {
     color: darkgreen;
     background: none;
     border: none;
-
+    cursor: pointer;
 }
 
 .bg-modal{
