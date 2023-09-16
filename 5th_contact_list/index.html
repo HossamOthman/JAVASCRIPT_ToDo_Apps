@@ -10,7 +10,11 @@
 <body>
     <div class="container">
         <h1 class="title">My Contacts</h1>
-        <input type="text" id="filterinput" class="searchInput" placeholder="Search Names...">
+        <div class="inputs">
+            <input type="text" id="filterinput" class="searchInput" placeholder="Search Names...">
+            <button class="add">+</button>
+        </div>
+        
         <ul  id="names" class="collection">
             <li class="collection-header">
                 <h5>A</h5>
@@ -55,6 +59,15 @@
                 <a href="#">Courtney</a>
             </li>
         </ul>
+    </div>
+    <div class="bg-modal">
+        <div class="modal-content">
+            <div class="close">&times;</div>
+            <form action="">
+                <input type="text" placeholder="Add New Contact...">
+                <input type="submit" class="button"></input>
+            </form>
+        </div>
     </div>
 </body>
 </html>
