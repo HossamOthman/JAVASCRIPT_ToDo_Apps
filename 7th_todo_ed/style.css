@@ -19,7 +19,8 @@ header, form{
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: 50%;
+    margin: auto
 }
 
 form input, form button {
@@ -28,6 +29,9 @@ form input, form button {
     border: none;
     background-color: whitesmoke;
     color: #444;
+}
+form > div {
+    margin-bottom: 10px;
 }
 
 form button {
@@ -44,7 +48,8 @@ form button:hover{
     align-items: center;
 }
 .todo-list{
-    min-width: 30%;
+    width: 50%;
+    padding: 0;
 }
 .todo{
     margin: 0.5rem;
@@ -109,3 +114,26 @@ select {
     cursor: pointer;
     font-size: 1rem;
 }
+
+
+@media (max-width: 1290px) {
+    .todo-list{
+        width: 70%;
+    }
+    form{
+        width: 100%;
+        margin: 0 auto;
+        flex-direction: column;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .todo-list{
+        width: 90%;
+    }
+    form{
+        width: 100%;
+        margin: 0 auto;
+        flex-direction: column;
+    }
+  }
