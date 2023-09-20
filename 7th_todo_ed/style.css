@@ -54,6 +54,7 @@ form button:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all .5s ease;
 }
 .todo li{
     flex: 1;
@@ -72,4 +73,15 @@ color: whitesmoke;
 }
 .trash-btn {
     background-color: #a31
+}
+.fa-trash, .fa-check{
+    pointer-events: none;
+}
+.fall{
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
+}
+.completed{
+    text-decoration: line-through;
+    opacity: 0.8;
 }
