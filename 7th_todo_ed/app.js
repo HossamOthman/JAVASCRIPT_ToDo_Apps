@@ -53,8 +53,14 @@ function deleteCheck(e){
     if (item.className == 'trash-btn'){
         const todo = item.parentElement
         todo.classList.add('fall');
+
+        // delete from local storage
+        removeLocalTodos(todo)
+
         // wait till animation to end then delete item
         todo.addEventListener("transitioned", () => todo.remove())
+
+        
         
     } else if (item.className == 'completed-btn') {
         item.parentElement.classList.toggle('completed');
@@ -129,4 +135,19 @@ function getTodos(){
     trashBtn.classList.add('trash-btn');
     todoDiv.appendChild(trashBtn);
     })
+}
+
+function removeLocalTodos(todo) {
+    let todos= [];
+    if(localStorage.getItem('seventh.todos') === null) {
+        todos =[];
+    } else {
+        todos = JSON.parse(localStorage.getItem('seventh.todos'))
+    }
+    const texVal = todo.children[0].innerText;
+    const todoIndex = todos.indexOf(texVal);
+    todos.splice(todoIndex, 1);
+
+    // update local storage
+    localStorage.setItem('seventh.todos', JSON.stringify(todos))
 }
