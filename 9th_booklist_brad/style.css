@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    background-color: #ddd;
+    background-color: #eee;
     }
     body {
     background-color: var(--page-bg);
@@ -67,7 +67,39 @@
         border-bottom: 1px solid #777;
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         font-size: larger;
         padding: 10px 5px;
+    }
+    .table thead tr td {
+        width: 100%;
+        font-weight: 700;
+    }
+    .table thead tr td:last-child {
+        width: 30px
+    }
+
+    .table tbody tr{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        font-size: larger;
+        padding: 10px 5px;
+    }
+    .table tbody tr:nth-of-type(2), .table tbody tr:nth-of-type(2) td  {
+        background-color: #ddd;
+    }
+    .table tbody tr td {
+        width: 100%
+    }
+    .table tbody tr td:last-child {
+        width: 30px
+    }
+    .tableDelete{
+        padding: 3px 5px;
+        font-weight: bolder;
+        text-decoration: none;
+        background-color: tomato;
+        color: whitesmoke;
+        cursor: pointer;
     }
