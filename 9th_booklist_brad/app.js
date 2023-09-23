@@ -23,9 +23,9 @@ class UI {
                 isbn: '1'
             }
         ];
-        const book = StoredBooks
+        const books = StoredBooks
 
-        StoredBooks.forEach(book => UI.addBookToList(book));
+        books.forEach(book => UI.addBookToList(book));
     }
     static addBookToList(book) {
         const list = document.querySelector('#book-list');
@@ -61,6 +61,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
     // instatiate book
     const book = new Book(title, author, isbn);
+    console.log(book);
 })
 
 

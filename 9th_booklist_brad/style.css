@@ -109,3 +109,6 @@
         color: whitesmoke;
         cursor: pointer;
     }
+    .tableDelete:hover {
+        background-color: red;
+    }
