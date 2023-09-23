@@ -11,19 +11,8 @@ class Book {
 // ui class: handles ui tasks
 class UI {
     static displayBooks() {
-        const StoredBooks = [
-            {
-                title: 'Book One',
-                author: 'John Doe',
-                isbn: '3323231'
-            },
-            {
-                title: 'Book Two',
-                author: 'Jane Doe',
-                isbn: '1'
-            }
-        ];
-        const books = StoredBooks
+       
+        const books = Store.getBooks();
 
         books.forEach(book => UI.addBookToList(book));
     }
@@ -67,6 +56,37 @@ class UI {
 
 
 // store class: handles storage
+class Store{
+    static getBooks()  {
+        let books;
+        if (localStorage.getItem('bookList.books') == null) {
+            books = [];
+        } else {
+            books = JSON.parse(localStorage.getItem('bookList.books'));
+        }
+        return books;
+    }
+
+    static addBook(book){
+        const books = Store.getBooks('bookList.books', JSON.stringify(books));
+
+        books.push(book);
+
+        localStorage.setItem('')
+    }
+
+    static removeBook(isbn){
+        const books = Store.getBooks('bookList.books', JSON.stringify(books));
+
+        books.forEach((book, index) => {
+            if (book.isbn == isbn) {
+                books.splice(index, 1);
+            }
+        });
+
+        localStorage.setItem('bookList.books', JSON.stringify(books));
+    }
+}
 
 
 
@@ -83,8 +103,8 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     const isbn = document.querySelector('#isbn').value;
 
     // validate
-    if(title == '' || author == '') {
-        UI.showAlert('Please fill in Book Title and Author Name', 'error')
+    if(title == '' || author == '' || isbn == '') {
+        UI.showAlert('Please fill in Book Title, Author Name & ISBN', 'error')
     } else {
     // instatiate book
     const book = new Book(title, author, isbn);
@@ -108,7 +128,7 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
 
     // show ui success message
     UI.showAlert(`Book Removed`, 'success');
-    
+
     // clear fields
 });
 
