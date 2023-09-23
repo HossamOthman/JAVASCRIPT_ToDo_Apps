@@ -68,15 +68,15 @@ class Store{
     }
 
     static addBook(book){
-        const books = Store.getBooks('bookList.books', JSON.stringify(books));
+        const books = Store.getBooks();
 
         books.push(book);
 
-        localStorage.setItem('')
+        localStorage.setItem('bookList.books', JSON.stringify(books))
     }
 
     static removeBook(isbn){
-        const books = Store.getBooks('bookList.books', JSON.stringify(books));
+        const books = Store.getBooks();
 
         books.forEach((book, index) => {
             if (book.isbn == isbn) {
@@ -113,6 +113,9 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     // add book to UI
     UI.addBookToList(book);
 
+    // add book to store
+    Store.addBook(book);
+
     // show ui success message
     UI.showAlert(`${book.title} Book was added to List`, 'success')
 
@@ -124,7 +127,12 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
 // event: remove a book
 document.querySelector('#book-list').addEventListener('click', (e) => {
+
+    // delete from UI
     UI.deleteBook(e.target);
+
+    // remove book from store
+    Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 
     // show ui success message
     UI.showAlert(`Book Removed`, 'success');
