@@ -29,6 +29,7 @@
     }
     #book-form{
         width: 100%;
+        margin-bottom: 5px;
     }
     .form-group{
         padding: 10px 0;
@@ -61,7 +62,7 @@
     }
 
     .table{
-        margin-top: 30px;
+        margin-top: 50px;
         width: 100%;
     }
     .table thead{
@@ -111,4 +112,17 @@
     }
     .tableDelete:hover {
         background-color: red;
+    }
+
+    .alert{
+        margin-bottom: -40px;
+        padding: 10px;
+        text-align: center;
+        color: whitesmoke;
+    }
+    .error{
+        background-color: tomato;
+    }
+    .success{
+        background-color: #0c7;
     }
