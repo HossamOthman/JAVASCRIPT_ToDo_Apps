@@ -1,5 +1,5 @@
 // book class: represents a book
-class book {
+class Book {
     constructor(title, author, isbn) {
         this.title = title;
         this.author = author;
@@ -52,7 +52,16 @@ document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
 
 // event: add a book
+document.querySelector('#book-form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    // get form values
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const isbn = document.querySelector('#isbn').value;
 
+    // instatiate book
+    const book = new Book(title, author, isbn);
+})
 
 
 // event: remove a book
